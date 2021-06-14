@@ -1,0 +1,342 @@
+\documentclass[pdf]{beamer}
+
+\input{preamble.tex}
+\usepackage{fontawesome}
+\usepackage{FiraSans}
+\usepackage{FiraMono}
+%TODO: 改 thm and box color to second
+
+
+% \setbeamercovered{transparent}
+
+
+% \usetheme{Madrid}
+\usecolortheme{ntu}
+
+\usetheme{ntu}
+% \setcolor[ntudark]{ntured}
+\setcolor[ntugold]{ntubrick}
+% \setcolor[blue]{deepblue}
+% \setcolor[ntured]{ntudark}
+
+
+
+\hypersetup{colorlinks,linkcolor=\secondcolor, urlcolor=\secondcolor, citecolor=\secondcolor}
+
+\title{NTU \\BEAMER TEMPLATE}
+\subtitle{A NTU beamer template}
+\author{Liang-Cheng Chen \& Po-Kang Hsiao}
+\date{June 2021}
+
+
+
+% \AtBeginSection[]{
+%   \begin{frame}
+%   \vfill
+%   \centering
+%   \begin{beamercolorbox}[sep=8pt,center]{title}
+%     \usebeamerfont{title}\insertsectionhead\par%
+%   \end{beamercolorbox}
+%   \vfill
+%   \end{frame}
+% }
+
+% \AtBeginSection{%
+%     \begin{frame}[plain, noframenumbering]{}
+%         \insertsectionhead
+%     \end{frame}%
+    
+% }
+
+\bibliography{reference.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=\firstcolor}
+
+\begin{document}
+
+\inserttitlepage
+
+\begin{frame}{Outline}
+
+    \tableofcontents
+    
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}{About\, this\, project ...}
+
+    \begin{itemize}
+        \item A less beamer-like NTU beamer template 
+        \item Easy color switching
+        \item Literature importance marking
+        \item Colorized description box
+    \end{itemize}
+    
+\end{frame}
+
+
+\section{Features}
+
+\subsection{Colors}
+
+\begin{frame}{Colors}
+
+\begin{itemize}
+    \item Use pre-defined NTU colors
+    \item Add new colors to \alert{beamercolorthementu.sty} file
+\end{itemize}
+\vspace{.5cm}
+\begin{mybox}{gray}{This template provides below colors to choose}
+    \begin{testcolors}[rgb]
+        
+        \testcolor{ntubrick}
+        \testcolor{ntugold}
+        
+        \testcolor{ntudark}
+        \testcolor{ntured}
+        \testcolor{ntublue}
+        
+    \end{testcolors}
+    
+    
+    
+\end{mybox} 
+\scriptsize{*More combination of colors can be found here : \href{https://colorhunt.co}{Color Hunt}}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Change Color}
+
+\begin{itemize}
+
+\item Use \alert{setcolor} function to change the main and secondary color of the slides
+    
+\begin{lstlisting}[style=tex]
+% Use NTU theme
+\usetheme{ntu}
+
+% Set 2 colors
+\setcolor[SecondColor]{MainColor}
+
+% Set main color only
+\setcolor{MainColor}
+\end{lstlisting}
+
+\item The colors in top bar and footline would be slightly darker
+    
+\end{itemize}
+
+\end{frame}
+
+\subsection{Itemize/Enumerate}
+
+\begin{frame}{Item and Enumerate}
+
+    \begin{itemize}
+        \item The item color 
+        \item The subitem would be closer to secondary color
+        \begin{itemize}
+            \item subitem color 
+        \end{itemize}
+        
+    \end{itemize}
+    
+    \begin{enumerate}
+        \item Same color is set to enumerate as well
+        \item The subitem will be closer to secondary
+        \begin{enumerate}
+            \item subitem color here
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+\end{frame}
+
+\subsection{Box}
+
+\begin{frame}{Box}
+
+\examplebox{Example box}{
+    This \alert{examplebox} command would take 2 arguments:
+    \begin{itemize}
+        \item box title
+        \item box content
+    \end{itemize}
+    And the box will automatically set to secondary color.
+}
+
+\end{frame}
+
+\begin{frame}{Box}
+    
+\begin{mybox}{\firstcolor}{More flexible box}
+Use mybox enviroment for more colors.
+\begin{itemize}
+    \item Set to firstcolor
+    \item Set to arbitary colors
+\end{itemize}
+\end{mybox}
+
+\begin{mybox}{deepblue}{Like This box}
+mybox\{color\}\{title\}
+\end{mybox}
+    
+\end{frame}
+
+\begin{frame}{More on Box}
+
+\begin{columns}[t]
+    
+    \begin{column}{0.5\linewidth}
+    
+        \examplebox{box 1}{This is the box 1.
+        \begin{itemize}
+            \item First
+            \item Second
+            \item Third
+        \end{itemize}
+        
+        }
+        
+        
+    \end{column}
+    
+    \begin{column}{0.33\linewidth}
+    
+        \examplebox{box 2}{This is the box 2.}
+        
+    \end{column}
+
+\end{columns}
+
+    
+\end{frame}
+
+
+\begin{frame}{Theorem}
+    \begin{Theorem} %TODO: insert thm number
+    
+        $a^2 + b^2 = c^2$
+    
+    \end{Theorem}
+\end{frame}
+
+
+\begin{frame}{Block}
+    
+    \begin{block}{Random Block Title}
+    This will be a block \cite{10.1257/aer.20200451}
+    This will be another citation \cite{10.1257/aer.20190553}
+    This will also be another citation \cite{Adler:1998:MDL}
+    \end{block}
+    
+\end{frame}
+
+\subsection{Overlay}
+
+\begin{frame}{Overlay}
+
+    \begin{itemize}[<+->]
+        \item First thing first
+        \item Second point 
+        \item And if you want to highlight current object
+    \end{itemize}
+    
+    \begin{enumerate}[<+-|alert@+>]
+        \item Adding [<|alert@+>] could help coloring
+        \item Now we're talking about this point
+        \item Test a math expression
+        
+        \begin{equation*}
+            \beta = (X'X)^{-1} \cdot (X'Y)
+        \end{equation*}
+        
+    \end{enumerate}
+    
+    
+\end{frame}
+
+\subsection{Code}
+
+\begin{frame}[fragile]{Code Display}
+    
+%TODO : code enviroment
+    
+\begin{lstlisting}[basicstyle=\normalise, style=py]
+# Python Code
+import torch
+import torch.nn as nn
+# model architecture
+class Classifier(nn.Module):
+    def __init__(self):
+        super().__init__()
+        pass
+model = Classifier()
+\end{lstlisting}
+    
+\end{frame}
+
+\subsection{Related Literature}
+
+\begin{frame}{Test Ref Command}
+
+
+
+% \let\oldcite\cite
+% \renewcommand{\cite}[2][]{%
+%     % #1 : otional, citation importance level (a, s)
+%     % #2 : citation doc
+%     \ifx\relax#1\relax
+%         \oldcite{#2}
+%     \else
+%         \ifthenelse{\equal{#1}{s}}{{\textbf{\color{\firstcolor} \cite{#2}}}}{{\color{\firstcolor} \cite{#2}}}    
+%     \fi
+% }
+
+% This is a test \textbf{\color{\firstcolor} \cite{10.1257/aer.20181607}}\\
+% Another citing test ~{\color{\firstcolor} \cite{10.1257/aer.20190553}}\\
+% I will cite this third thing ~\cite{10.1257/aer.20200451}
+
+
+This is the most important citation ~\cite[s]{10.1257/aer.20181607}\\
+This would be second ~\cite[a]{10.1257/aer.20190553}\\
+Normal cite ~\cite{Adler:1998:MDL}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Related Literature}
+    
+\end{frame}
+
+
+\begin{frame}[t, allowframebreaks]{Reference}
+
+\printbibliography
+    
+    
+\end{frame}
+
+\section{Project}
+
+\begin{frame}{Download}
+
+    To use this template, you could download the whole project from
+    our github page.
+    % \url{https://github.com/liangchenn/NTU-Beamer}\\
+    \hyperlink{https://github.com/liangchenn/NTU-Beamer}{\beamergotobutton{github link}}%TODO: change github link
+    \\
+    \hyperlink{https://github.com/liangchenn/NTU-Beamer}{\faGithub}
+    
+\end{frame}
+
+
+
+\end{document}

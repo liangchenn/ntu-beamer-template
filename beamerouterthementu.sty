@@ -1,0 +1,121 @@
+\mode<presentation>
+
+% remove navigation
+\setbeamertemplate{navigation symbols}{}
+
+
+% headline
+
+% \IfFileExists{logos/\firstcolor.png}{logos/\firstcolor.png}{logos/ntubrick.png}
+\setbeamertemplate{headline}{
+    % top bar 
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2pt, dp=1pt]{fl}
+    \end{beamercolorbox}
+    
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2pt, dp=1pt]{hl}
+    \end{beamercolorbox}
+
+    % logo
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west, 
+          xshift=1mm, 
+          yshift=-2mm] 
+          at (current page.north west) 
+         {\includegraphics[width= 9mm,keepaspectratio]{logos/\firstcolor.png}}; 
+    \end{tikzpicture}
+    
+    
+    % section and frame title
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,
+         text width = \textwidth,
+         xshift=21mm, 
+         yshift=-5mm] 
+         at (current page.north west)
+         {{\usebeamerfont{section}%
+           \usebeamercolor[fg]{section}%
+           \insertsection\vspace{2mm}}\\
+           {\usebeamerfont{frametitle}%
+            \insertframetitle}};
+    \end{tikzpicture}
+    \vspace{10mm}
+    
+    % NOTE: If want to include subsection on top right
+    % \begin{tikzpicture}[remember picture,overlay]
+    % \node[anchor=north west,
+    %      text width = \textwidth,
+    %      xshift=21mm, 
+    %      yshift=-5mm] 
+    %      at (current page.north west)
+    %      {{\usebeamerfont{section}%
+    %       \usebeamercolor[fg]{section}%
+    %       \insertsection\vspace{2mm}}
+    %       {\usebeamerfont{subsection}%
+    %       \usebeamercolor[fg]{subsection}%
+    %       \,-\,\insertsubsection\vspace{2mm}}\\
+    %       {\usebeamerfont{frametitle}%
+    %         \insertframetitle}};
+    % \end{tikzpicture}
+    % \vspace{10mm}
+}
+
+
+
+\setbeamertemplate{footline}{
+    % bottom bar
+    \begin{beamercolorbox}[wd=\paperwidth, ht=10pt, dp=1pt]{fl}
+    \usebeamerfont{footline}
+    % \usebeamercolor[fg= red]{footline}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west, 
+          xshift=10mm, 
+          yshift=.9mm] 
+         at (current page.south west)
+         {\today}; 
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west, 
+          xshift=25mm, 
+          yshift=.9mm] 
+          at (current page.south west) 
+         {\department}; 
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east, 
+          xshift=-10mm, 
+          yshift=1.2mm] 
+         at (current page.south east) 
+         {\insertpagenumber}; 
+    \end{tikzpicture}
+    
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east, 
+          xshift=-15mm, 
+          yshift=1mm] 
+          at (current page.south east) 
+         {\inserttitle}; 
+    \end{tikzpicture}
+    
+    \end{beamercolorbox}
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\mode<all>

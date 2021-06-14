@@ -1,0 +1,155 @@
+\usepackage{helvet}
+\usepackage[english]{babel}
+\usepackage{pgfplots}
+\usepackage{pgf}
+\pgfplotsset{compat=newest}
+\usepackage{booktabs}
+\usepackage{graphics}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{biblatex}
+\usepackage{hyperref}
+
+\usetheme{ntu}
+% \newcommand{\setcolor}[2]{\def\chosencolor{#1}, \def\chosencolortwo{#2}}
+
+% \newcommand{\setcolor}[1]{\def\chosencolor{#1}}
+
+% \newcommand{\setcolor}[2]{\def\firstcolor{#1} \def\secondcolor{#2}}
+% \hypersetup{colorlinks,linkcolor=\firstcolor, urlcolor=\firstcolor}
+
+\newcommand{\setcolor}[2][]{
+    \ifx\relax#1\relax
+        \def\firstcolor{#2} \def\secondcolor{#2}
+    \else
+        \def\firstcolor{#2} \def\secondcolor{#1}
+    \fi
+}
+
+\let\oldcite\cite
+\renewcommand{\cite}[2][]{%
+    % #1 : otional, citation importance level (a, s)
+    % #2 : citation doc
+    \ifx\relax#1\relax
+        \oldcite{#2}
+    \else
+        \ifthenelse{\equal{#1}{s}}{{\textbf{\color{\firstcolor} \cite{#2}}}}{{\color{\firstcolor} \cite{#2}}}    
+    \fi
+}
+
+
+% \newcommand{\setbg}[1]{\def\chosenbgcolor{#1}}
+%\newcommand{\setcolortwo}[1]{\def\chosencolortwo{#1}}
+
+\newcommand{\setdepartment}[1]{\def\department{#1}}
+
+% \usetheme{ntu}
+\setbeamersize{text margin left=22mm}
+\def\insertframetitle{}
+
+\newcommand{\inserttitlepage}{
+    \begin{frame}[plain, noframenumbering]{}
+
+        \begin{center}
+        \hspace{-3.6em}
+         \includegraphics[width = 0.6\paperwidth]{logos/\targetcolourmodel/ntu_logo.png}
+%            \includegraphics[width = 0.25\paperwidth]{logos/\targetcolourmodel/white.pdf}
+        \end{center}
+        
+    \end{frame}
+
+    \begin{frame}[plain]{}
+        \color{white}\maketitle    
+    \end{frame}
+
+    \setbeamercolor{background canvas}{bg = white}
+}
+
+
+\newcommand{\examplebox}[2]{
+\begin{tcolorbox}[colframe=\secondcolor,colback=\secondcolor!10,title=#1]
+#2
+\end{tcolorbox}}
+
+
+\newtcolorbox{mybox}[3][]{
+    colframe = #2!25,
+    colback  = #2!10,
+    coltitle = #2!20!black,
+    title    = #3,
+    #1,
+}
+
+% \newtcolorbox{example}[3][]{
+%     colframe = #2!25,
+%     colback  = #2!10,
+%     coltitle = #2!20!black,
+%     title    = #3,
+%     #1,
+% }
+
+
+\lstset{%
+    basicstyle=\normalise\ttfamily,
+    keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
+    backgroundcolor = \color{lightgray!20},
+    stringstyle = \color{\secondcolor},
+    commentstyle=\color{\firstcolor!60}
+}
+
+\lstdefinestyle{py}{
+  language=python,
+  numbers=left,
+  xleftmargin=1.0ex,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false
+}
+
+\lstdefinestyle{R}{
+  language=R,
+  numbers=left,
+  xleftmargin=1.0ex,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false
+}
+
+
+\lstdefinestyle{tex}{
+  language=TeX,
+  xleftmargin=1.0ex,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false
+}
+
+
+
+% \lstset{%
+%     language=Latex,
+%     basicstyle=\ttfamily,
+%     keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
+%     breaklines=true
+% }
+

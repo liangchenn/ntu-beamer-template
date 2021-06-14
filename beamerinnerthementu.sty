@@ -1,0 +1,72 @@
+\mode<presentation>
+\setbeamertemplate{title page}{
+    {
+        \usebeamercolor[fg]{title}
+        
+        % title
+        \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, 
+              text width = .95\paperwidth,
+              xshift=2mm, 
+              yshift=5mm] 
+             at (current page.south west)
+             {
+               {\usebeamerfont{title}\textbf{\inserttitle}\par}\vspace{5mm}
+               {\large\insertsubtitle\par}\vspace{2mm}
+               {\insertauthor\par}\vspace{5mm}
+               %{\large\insertdate\par}
+             };
+        \end{tikzpicture}
+        
+    }
+        % logo
+        \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, 
+              xshift=1mm, 
+              yshift=-2mm] 
+             at (current page.north west) 
+             {\includegraphics[width=10mm,keepaspectratio]{logos/old_logo_white.png}}; 
+        \end{tikzpicture}
+        
+         % logo
+        %\begin{tikzpicture}[remember picture, overlay]
+        %\node[anchor=north west, 
+         %     xshift=1mm, 
+         %     yshift=-2mm] 
+         %    at (current page.north west) 
+         %   {\includegraphics[width=7.5mm,keepaspectratio]{logos/\targetcolourmodel/white.pdf}}; 
+        %\end{tikzpicture}
+}
+
+\setbeamertemplate{section page}{
+    
+    {
+        \usebeamercolor[fg]{section title}
+        
+        % title
+        \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, 
+              text width = .5\paperwidth,
+              xshift=2mm, 
+              yshift=5mm] 
+             at (current page.south west)
+             {
+               {\usebeamerfont{section title}\textbf{\insersectionttitle}\par}\vspace{5mm}
+               %{\large\insertdate\par}
+             };
+        \end{tikzpicture}
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+}
+
+
+
+\setbeamertemplate{frametitle}{}
+\mode<all>
