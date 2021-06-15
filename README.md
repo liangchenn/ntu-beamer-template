@@ -1,8 +1,10 @@
 # NTU-Beamer-Template
 
-This is a final project for Typesetting Scientific Presentation, a minicourse at National Taiwan University.
+`ntu-beamer-template` is an unofficial presentation template for National Taiwan University.
 
-This project aims to provide an unofficial and user-friendly presentation template with NTU theme.
+This is a final project for Typesetting Scientific Presentation, a minicourse at NTU.
+
+This project aims to provide a good-looking and user-friendly presentation template with NTU theme.
 
 We modify some existing beautiful beamer templates and design our own theme colors and logos for the templates
 
@@ -30,13 +32,13 @@ We modify some existing beautiful beamer templates and design our own theme colo
 - There are several colors already be defined in our `beamercolorthementu.sty` file, you could directly use those colors to change themes or define the colors you like in the same file.
 
 - When using colors other than pre-defined ones, you should modify the logo path in `beamerouterthementu.sty` file.
-    - Since the logo is originally set to the `logos/yourFirstcolor.png`, it will be missing if the file doesn't exist.
+    - Since the logo is originally set to `logos/yourFirstcolor.png`, it will be missing if the file doesn't exist.
     - Another solution is upload a logo image with the corresponding filename. e.g. `logos/blue.png`
-    - _We still working on this issue to automatically check if the image exists and set a default logo image otherwise._
+    - _We're still working on this issue to automatically check if the image exists and set a default logo image otherwise._
 
 ### Dark frame environment
 
-- If you want to use a slide with a dark background, could use our darkframe environment
+- If you want to use a slide with a dark background, could utilize our darkframe environment
 
     ```tex
     \begin{darkframe}[title]
@@ -44,7 +46,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
     \end{darkframe}
     ```
 
-- To change the dark theme background color by using
+- To change the dark theme background color, use `\setdarkframecolor` command
 
     ```tex
     \setdarkframecolor{backgroundcolor}
@@ -52,10 +54,10 @@ We modify some existing beautiful beamer templates and design our own theme colo
 
 ### Other features
 
-- The overlay will highlight current point in main color.
+- Current point will be highlighted in main color in the overlay.
 
 - `Itemize/enumerate` will go from main color to second color gradually when using `subitem/subsubitem`
-- A customized `examplebox` command and `mybox` environment to have good looking box
+- A customized `examplebox` command and `mybox` environment to have good-looking box
 
     ```tex
     % examplebox directly using second color
@@ -111,7 +113,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
 ### Description
 
 - `README.md` : breif intro to the project
-- `*.sty` files : our main theme style files
+- `*.sty` : our main theme style files
 - `preamble.tex` : preamble and some self-defined commands
 - `logos/` : directory for logos in different colors
 - `main.tex` : a slide tex file
@@ -123,7 +125,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
 
 We refer to different beamer template projects to create our own beamer style files and modify some features to fit our needs. 
 
-We will list these projects below, and these are very beautiful and useful beamer templates that you could try !
+We list these projects below for reference, and these are very beautiful and useful beamer templates that you could try as well !
 
 - [Drcula/Dracula dark Beamer Template](https://draculatheme.com/beamer)
 - [DTU Beamer Template on Overleaf](http://latex.dtu.dk/?page_id=61)
