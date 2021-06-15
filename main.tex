@@ -4,27 +4,34 @@
 \usepackage{fontawesome}
 \usepackage{FiraSans}
 \usepackage{FiraMono}
-%TODO: 改 thm and box color to second
 
 
 % \setbeamercovered{transparent}
 
 
 % \usetheme{Madrid}
-\usecolortheme{ntu}
+% \usecolortheme{ntu}
 
 \usetheme{ntu}
-% \setcolor[ntudark]{ntured}
 \setcolor[ntugold]{ntubrick}
-% \setcolor[blue]{deepblue}
-% \setcolor[ntured]{ntudark}
+
+%\setcolor[lakerpurple]{ntudark}
+%\setcolor[rred]{bblue}
+%\setcolor{ntubrick}  % example of setting only one color 
+
+% Warning : If you set color other than ntu types, the logo in outertheme will disappear. Latex can not change the color of a picture. You might need to work on it yourself (e.g.PS)
 
 
 
+\setdarkframecolor{darkthemedeepblue!20!black}
 \hypersetup{colorlinks,linkcolor=\secondcolor, urlcolor=\secondcolor, citecolor=\secondcolor}
 
+
+
+% Set title, author ... etc
+
 \title{NTU \\BEAMER TEMPLATE}
-\subtitle{A NTU beamer template}
+\subtitle{ALL YOU NEED IS SETCOLOR}
 \author{Liang-Cheng Chen \& Po-Kang Hsiao}
 \date{June 2021}
 
@@ -55,7 +62,7 @@
 
 \begin{document}
 
-\inserttitlepage
+ \inserttitlepage
 
 \begin{frame}{Outline}
 
@@ -65,6 +72,17 @@
 
 
 \section{Introduction}
+
+\begin{frame}{Motivation}
+
+    \begin{itemize}
+        \item No existing NTU beamer (with logo)
+        \item Modern but structural template
+        \item Adjustable color
+        \item We like dark theme
+    \end{itemize}
+    
+\end{frame}
 
 \begin{frame}{About\, this\, project ...}
 
@@ -90,14 +108,16 @@
 \end{itemize}
 \vspace{.5cm}
 \begin{mybox}{gray}{This template provides below colors to choose}
-    \begin{testcolors}[rgb]
+    \begin{testcolors}[RGB]
         
         \testcolor{ntubrick}
         \testcolor{ntugold}
-        
         \testcolor{ntudark}
         \testcolor{ntured}
         \testcolor{ntublue}
+        
+        \testcolor{lakerpurple}
+        \testcolor{lakergold}
         
     \end{testcolors}
     
@@ -181,7 +201,7 @@ Use mybox enviroment for more colors.
 \end{itemize}
 \end{mybox}
 
-\begin{mybox}{deepblue}{Like This box}
+\begin{mybox}{purple}{Like This box}
 mybox\{color\}\{title\}
 \end{mybox}
     
@@ -217,11 +237,16 @@ mybox\{color\}\{title\}
 \end{frame}
 
 
-\begin{frame}{Theorem}
+\begin{frame}{Bayes' theorem}
     \begin{Theorem} %TODO: insert thm number
-    
-        $a^2 + b^2 = c^2$
-    
+     \begin{itemize}
+        \item Bayes Rule\\
+        \[\mathds{P}(A|B) = \frac{\mathds{P}(P|A) \cdot \mathds{P}(A)}{\mathds{P}(B)}\]
+        \item Let \(A_1, A_2, \dots , A_K\) be a \textit{partition} of the sample space \(S\). Using the \textit{law of total probability} for \(\mathds{P}(B)\), it then holds that:
+        \[
+            \mathds{P}(A_j | B) = \frac{\mathds{P}(B|A_j) \cdot \mathds{(A_j)}}{\sum_k \mathds{P}(B|A_k) \cdot \mathds{P}(A_k)}
+        \]
+    \end{itemize}
     \end{Theorem}
 \end{frame}
 
@@ -229,9 +254,13 @@ mybox\{color\}\{title\}
 \begin{frame}{Block}
     
     \begin{block}{Random Block Title}
-    This will be a block \cite{10.1257/aer.20200451}
-    This will be another citation \cite{10.1257/aer.20190553}
-    This will also be another citation \cite{Adler:1998:MDL}
+    \begin{enumerate}
+
+    \item This will be a block \cite{10.1257/aer.20200451}
+    \item This will be another citation \cite{10.1257/aer.20190553}
+    \item This will also be another citation \cite{Adler:1998:MDL}
+    \item This still will be another citation \cite{doi:https://doi.org/10.1002/9780470756461.ch5}
+     \end{enumerate}
     \end{block}
     
 \end{frame}
@@ -263,59 +292,124 @@ mybox\{color\}\{title\}
 \subsection{Code}
 
 \begin{frame}[fragile]{Code Display}
-    
+% now is unable to be flexible adjustable
 %TODO : code enviroment
-    
-\begin{lstlisting}[basicstyle=\normalise, style=py]
+
+\begin{lstlisting}[basicstyle=\normalsize, language=python]
 # Python Code
 import torch
 import torch.nn as nn
+
 # model architecture
 class Classifier(nn.Module):
     def __init__(self):
         super().__init__()
         pass
 model = Classifier()
+
 \end{lstlisting}
     
 \end{frame}
 
+
+
 \subsection{Related Literature}
 
-\begin{frame}{Test Ref Command}
+\begin{frame}{Related Literature}
+
+\examplebox{citation with levels}{
+\begin{itemize}
+    \item The normal citation would be like this ~\cite{Adler:1998:MDL}
+    
+    \item If the citation is more realted / important, could set the cite level to A ~\cite[A]{10.1257/aer.20190553}
+    
+    \item The most important level (level set to "S") will be like this ~\cite[S]{10.1257/aer.20181607}
+\end{itemize}
+
+}
+
+\end{frame}
 
 
 
-% \let\oldcite\cite
-% \renewcommand{\cite}[2][]{%
-%     % #1 : otional, citation importance level (a, s)
-%     % #2 : citation doc
-%     \ifx\relax#1\relax
-%         \oldcite{#2}
-%     \else
-%         \ifthenelse{\equal{#1}{s}}{{\textbf{\color{\firstcolor} \cite{#2}}}}{{\color{\firstcolor} \cite{#2}}}    
-%     \fi
+% {
+% \setbeamercolor{background canvas}{bg=ntudark} % Bg
+% %\setbeamertemplate{frametitle}{\insertframetitle}
+% \setbeamercolor{frametitle}{fg = white}
+% \setbeamercolor{enumerate}{fg = white}
+% \setbeamercolor{itemize}{bg = white}
+% \setbeamercolor{itemize/enumerate body}{fg = white}
+%  \begin{frame}{Dark Theme}
+%  \color{white}
+%  \darkthemelogo
+%   \begin{itemize}
+%         \item he
+%         \item boo
+%         \begin{block}
+%         moomoo
+%         \end{block}
+%         \item qwe
+%     \end{itemize}
+     
+%  \end{frame}
 % }
 
-% This is a test \textbf{\color{\firstcolor} \cite{10.1257/aer.20181607}}\\
-% Another citing test ~{\color{\firstcolor} \cite{10.1257/aer.20190553}}\\
-% I will cite this third thing ~\cite{10.1257/aer.20200451}
+\begin{darkframe}
+\frametitle{Example of a Dark Theme }
 
-
-This is the most important citation ~\cite[s]{10.1257/aer.20181607}\\
-This would be second ~\cite[a]{10.1257/aer.20190553}\\
-Normal cite ~\cite{Adler:1998:MDL}
-
-
-\end{frame}
-
-
-
-
-\begin{frame}{Related Literature}
+    \begin{itemize}
+        \item item 1
+        \item item 2
+        \item test a table
+    \end{itemize}
     
-\end{frame}
+    \begin{table}[H]
+    \resizebox{.5\textwidth}{!}{%
+    \label{tab:tableExample}
+    \begin{tabular}{@{}llS@{}}
+    \toprule
+    \multicolumn{2}{c}{Record} &            \\ \cmidrule(r){1-2}
+    User       & Product & Price (\$) \\ \midrule
+    UserA      & Product1     & 13.65      \\
+               & Product2     & 0.01       \\
+    UserB      & Product3     & 92.50      \\
+    UserC      & Product4     & 33.33      \\
+    UserD      & Product5     & 8.99       \\ \bottomrule
+    \end{tabular}%
+    }
+    \end{table}
+    
+\end{darkframe}
 
+\begin{darkframe}[summary table]
+% \frametitle{Summary Table}
+\begin{table}[!htbp] \centering 
+  \caption{The iris dataset descriptive statistics.} 
+  \label{1} 
+\resizebox{\columnwidth}{!}{%
+    \begin{tabular}{@{\extracolsep{5pt}}lccccccc} 
+    \\[-1.8ex]\hline 
+    \hline \\[-1.8ex] 
+    Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\ 
+    \hline \\[-1.8ex] 
+    Sepal.Length & 150 & 5.843 & 0.828 & 4.300 & 5.100 & 6.400 & 7.900 \\ 
+    Sepal.Width & 150 & 3.057 & 0.436 & 2.000 & 2.800 & 3.300 & 4.400 \\ 
+    Petal.Length & 150 & 3.758 & 1.765 & 1.000 & 1.600 & 5.100 & 6.900 \\ 
+    Petal.Width & 150 & 1.199 & 0.762 & 0.100 & 0.300 & 1.800 & 2.500 \\ 
+    \hline \\[-1.8ex] 
+    \end{tabular}%
+}
+\end{table} 
+\end{darkframe}
+
+
+
+
+\begin{darkframe}
+\frametitle{Graph is more vivid within the dark theme}
+\centering{\includegraphics[width=9cm,keepaspectratio]{logos/cat.jpeg}}
+% The pic is from unsplash where one will not encounter copyright problems.
+\end{darkframe}
 
 \begin{frame}[t, allowframebreaks]{Reference}
 
@@ -326,17 +420,32 @@ Normal cite ~\cite{Adler:1998:MDL}
 
 \section{Project}
 
+
 \begin{frame}{Download}
 
     To use this template, you could download the whole project from
-    our github page.
+    the overleaf or github page.\\
     % \url{https://github.com/liangchenn/NTU-Beamer}\\
-    \hyperlink{https://github.com/liangchenn/NTU-Beamer}{\beamergotobutton{github link}}%TODO: change github link
-    \\
-    \hyperlink{https://github.com/liangchenn/NTU-Beamer}{\faGithub}
+    \href{https://www.overleaf.com/read/yrcpntvzgsnh}{\beamergotobutton{overleaf link}}~~
+    \href{https://github.com/liangchenn/ntu-beamer-template}{\faGithub}
     
 \end{frame}
 
+
+\begin{frame}{Still working on...}
+
+\begin{itemize}
+    \item Individually stylize the references
+    \begin{itemize}
+        \item We can not change the font by setbeamerfont and we do not know why 
+        \item We expect to trasfer our newcommand cite's second argument into the coloring or font size or ordering in printing reference. 
+    \end{itemize}
+    \item Progress bar on headline.
+    \item Copyright of the icon NTU, and reference from other projects we should refer to.
+    
+\end{itemize}
+    
+\end{frame}
 
 
 \end{document}

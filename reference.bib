@@ -1,5 +1,20 @@
+% We did not succeed in creating an automatically order the literature just using \cite while you are citing...
+% But now we have found a rough way of ordering by ...
+% https://tex.stackexchange.com/questions/327010/bibtex-custom-bibliography-order
+
+% Insert the command "\noopsort{01}" for the first literature you want to put in the beginning.   
+
+% Other ordering of the literature please refer to here:
+% https://tex.stackexchange.com/questions/51434/biblatex-citation-order
+
+% more can read here : 
+% https://tex.stackexchange.com/questions/430266/add-references-in-beamer-presentation?fbclid=IwAR2jTnmjHpuw4RHTveoa3AQfG0r44vU7p81SUyqdsF7LQQAhNTf8WTrjeZo
+% https://tex.stackexchange.com/questions/68080/beamer-bibliography-icon?fbclid=IwAR2sx7264RwrP7Crj5FcrC-P0sBft81NNvUuBtCYfFceFJiqMBgmH1RAWFs
+
+@preamble{ "\providecommand{\noopsort}[1]{} " }
+
 @article{10.1257/aer.20200451,
-Author = {Dynarski, Susan and Libassi, CJ and Michelmore, Katherine and Owen, Stephanie},
+Author = {\noopsort{01}Dynarski, Susan and Libassi, CJ and Michelmore, Katherine and Owen, Stephanie},
 Title = {Closing the Gap: The Effect of Reducing Complexity and Uncertainty in College Pricing on the Choices of Low-Income Students},
 Journal = {American Economic Review},
 Volume = {111},
@@ -62,3 +77,16 @@ Pages = {976-1012},
 DOI = {10.1257/aer.20181779},
 URL = {https://www.aeaweb.org/articles?id=10.1257/aer.20181779}}
 
+@inbook{doi:https://doi.org/10.1002/9780470756461.ch5,
+author = {Davis, Donald R. and Weinstein, David E.},
+publisher = {John Wiley & Sons, Ltd},
+isbn = {9780470756461},
+title = {The Factor Content of Trade},
+booktitle = {Handbook of International Trade},
+chapter = {5},
+pages = {119-145},
+doi = {https://doi.org/10.1002/9780470756461.ch5},
+year = {2003},
+keywords = {factor content of trade, endowments, production, Heckscher-Ohlin-Vanek model, factor price equalization},
+abstract = {Summary This chapter contains sections titled: Introduction Theory Data Issues Factor Content: What are the Tests? Further Work Conclusions}
+}

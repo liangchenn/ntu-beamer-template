@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 \usepackage{pgfplots}
 \usepackage{pgf}
+\usepackage{tikz}
 \pgfplotsset{compat=newest}
 \usepackage{booktabs}
 \usepackage{graphics}
@@ -21,18 +22,17 @@
 \usepackage{subcaption}
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage{biblatex}
+\usepackage[sorting=nty]{biblatex}
 \usepackage{hyperref}
 
+% usetheme first to capture the \firstcolor and \secondcolor
 \usetheme{ntu}
-% \newcommand{\setcolor}[2]{\def\chosencolor{#1}, \def\chosencolortwo{#2}}
 
-% \newcommand{\setcolor}[1]{\def\chosencolor{#1}}
-
-% \newcommand{\setcolor}[2]{\def\firstcolor{#1} \def\secondcolor{#2}}
-% \hypersetup{colorlinks,linkcolor=\firstcolor, urlcolor=\firstcolor}
-
-\newcommand{\setcolor}[2][]{
+% implement `setcolor` function to quickly set theme colors
+\newcommand{\setcolor}[2][]{%
+    % #1 : optional, the secondary color [ntugold]
+    % #2 : mandatory, the main color theme [ntubrick]
+    % If the first argument is blank, it will be a mono-color theme
     \ifx\relax#1\relax
         \def\firstcolor{#2} \def\secondcolor{#2}
     \else
@@ -40,36 +40,81 @@
     \fi
 }
 
+% implement `setdarkframecolor` to quickly set darkframe background color
+\newcommand{\setdarkframecolor}[1]{\def\darkframecolor{#1}}
+\def\darkframecolor{darkthemeblack}
+
+
+% implement new cite function that can manually set the level of importance
+% importance level including {A, S}
+% if the first arg is missing, it will behave exactly like normal \cite{}
 \let\oldcite\cite
 \renewcommand{\cite}[2][]{%
-    % #1 : otional, citation importance level (a, s)
+    % #1 : otional, citation importance level (A, S)
     % #2 : citation doc
     \ifx\relax#1\relax
         \oldcite{#2}
     \else
-        \ifthenelse{\equal{#1}{s}}{{\textbf{\color{\firstcolor} \cite{#2}}}}{{\color{\firstcolor} \cite{#2}}}    
+        \ifthenelse{\equal{#1}{S}}{{\textbf{\color{\firstcolor} \cite{#2}}}}{{\color{\firstcolor} \cite{#2}}}    
     \fi
 }
 
+% A customized `examplebox` automatically set to secondary color
+\newcommand{\examplebox}[2]{%
+% here use tcolorbox package's tcolorbox environment
+\begin{tcolorbox}[colframe=\secondcolor,colback=\secondcolor!10,title=#1]
+#2
+\end{tcolorbox}}
 
-% \newcommand{\setbg}[1]{\def\chosenbgcolor{#1}}
-%\newcommand{\setcolortwo}[1]{\def\chosencolortwo{#1}}
 
+% A more flexible box environment called mybox
+% To use it :
+% \begin{mybox}{color}{title}
+%   content
+% \end{mybox}
+\newtcolorbox{mybox}[3][]{
+    % #1 : content
+    % #2 : color
+    % #3 : title
+    colframe = #2!25,
+    colback  = #2!10,
+    coltitle = #2!20!black,
+    title    = #3,
+    #1,
+}
+
+% implement the \darkthemelogo function to plot white logo in dark bg
+\newcommand{\darkthemelogo}{
+ \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, 
+              xshift=0.6mm, 
+              yshift=-3.0mm] 
+             at (current page.north west) 
+             {\includegraphics[width=9mm,keepaspectratio]{logos/dark_theme_logo.png}}; 
+        \end{tikzpicture}
+}
+
+
+
+
+
+% keep reference template \setdepartment command
 \newcommand{\setdepartment}[1]{\def\department{#1}}
 
-% \usetheme{ntu}
 \setbeamersize{text margin left=22mm}
 \def\insertframetitle{}
 
+% keep reference template command to plot title page
+
 \newcommand{\inserttitlepage}{
+% big white logo on the first page
+% If you want to remove, plz comment the whole frame
     \begin{frame}[plain, noframenumbering]{}
 
         \begin{center}
-        \hspace{-3.6em}
+       \hspace{-3.6em}
          \includegraphics[width = 0.6\paperwidth]{logos/\targetcolourmodel/ntu_logo.png}
-%            \includegraphics[width = 0.25\paperwidth]{logos/\targetcolourmodel/white.pdf}
-        \end{center}
-        
+       \end{center}
     \end{frame}
 
     \begin{frame}[plain]{}
@@ -80,37 +125,49 @@
 }
 
 
-\newcommand{\examplebox}[2]{
-\begin{tcolorbox}[colframe=\secondcolor,colback=\secondcolor!10,title=#1]
-#2
-\end{tcolorbox}}
+% Darkframe Setups
+\newenvironment{darkframe}[1][]
+    {
+    % \setcolor[darkthemepurple]{darkthemepink}
+    \setbeamercolor{background canvas}{bg=\darkframecolor} % Bg
+    \setbeamercolor{hl}{\secondcolor!20!ntudark}
+    \setbeamercolor{section}{fg=\secondcolor!70!ntudark}
+    \setbeamercolor{frametitle}{fg = darkthemewhite}
+    \setbeamercolor{enumerate}{fg = darkthemewhite}
+    \setbeamercolor{itemize}{bg = darkthemewhite}
+    \setbeamercolor{itemize/enumerate body}{fg = darkthemewhite}
+    \setbeamercolor{caption}{fg=darkthemewhite}
+    \begin{frame}{#1}
+    \color{darkthemewhite}
+    \darkthemelogo
+    }
+    { 
+    \end{frame}
+    }
+    
+% \hypersetup{colorlinks,linkcolor=\secondcolor, urlcolor=\secondcolor, citecolor=\secondcolor}
 
 
-\newtcolorbox{mybox}[3][]{
-    colframe = #2!25,
-    colback  = #2!10,
-    coltitle = #2!20!black,
-    title    = #3,
-    #1,
-}
 
-% \newtcolorbox{example}[3][]{
-%     colframe = #2!25,
-%     colback  = #2!10,
-%     coltitle = #2!20!black,
-%     title    = #3,
-%     #1,
-% }
+% Code displaying setup through listings
 
-
+% basic setups
 \lstset{%
-    basicstyle=\normalise\ttfamily,
+    basicstyle=\footnotesize\ttfamily,
     keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
     backgroundcolor = \color{lightgray!20},
     stringstyle = \color{\secondcolor},
-    commentstyle=\color{\firstcolor!60}
+    commentstyle=\color{\firstcolor!60},
+    numbers=left,
+    xleftmargin=1.0ex,
+    stepnumber=1,
+    numbersep=10pt,
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false
 }
 
+% Python style
 \lstdefinestyle{py}{
   language=python,
   numbers=left,
@@ -122,6 +179,7 @@
   showstringspaces=false
 }
 
+% R style
 \lstdefinestyle{R}{
   language=R,
   numbers=left,
@@ -133,7 +191,7 @@
   showstringspaces=false
 }
 
-
+% TeX style
 \lstdefinestyle{tex}{
   language=TeX,
   xleftmargin=1.0ex,
@@ -144,12 +202,29 @@
   showstringspaces=false
 }
 
+% NOTE : In fact, directly using lstlisting would be quick enough
+% FIXME : failed code environment, use lstlisting would be faster
+% \newenvironment{mycode}[1][\unskip]
+%     {
+%     \begin{lstlisting}[style=#1]
+%     }
+%     { 
+%     \end{lstlisting}
+%     }
+
+% NOTE: self-defined resized table
+% \newenvironment{mytable}[1][1]
+%     {
+%     \begin{table}
+%     \resizebox{#1\columnwidth}{!}{
+%     \begin{tabular}{c|c}
+%          &  \\
+%          & 
+%     \end{tabular}
+%     }
+%     { 
+%     \end{table}
+%     }
 
 
-% \lstset{%
-%     language=Latex,
-%     basicstyle=\ttfamily,
-%     keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
-%     breaklines=true
-% }
-
+% The end of preamle file
