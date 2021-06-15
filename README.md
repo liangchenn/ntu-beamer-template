@@ -101,6 +101,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
 ├── beamerouterthementu.sty
 ├── beamerthementu.sty
 ├── logos/
+├── demo.pdf
 ├── main.tex
 ├── preamble.tex
 └── reference.bib
@@ -114,6 +115,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
 - `preamble.tex` : preamble and some self-defined commands
 - `logos/` : directory for logos in different colors
 - `main.tex` : a slide tex file
+- `demo.pdf` : a demostration slide pdf
 - `reference.bib` : a bib file example 
 
 
