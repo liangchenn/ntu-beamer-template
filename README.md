@@ -36,6 +36,23 @@ We modify some existing beautiful beamer templates and design our own theme colo
     - Another solution is upload a logo image with the corresponding filename. e.g. `logos/blue.png`
     - _We're still working on this issue to automatically check if the image exists and set a default logo image otherwise._
 
+- We offer a workaround here for you to change logo color with given RGB value with a python script.
+
+    ```bash
+    # install modules first
+    pip install -r requirements.txt
+
+    # example
+    $ python change_logo_color.py --rgb 128 0 0 --output logos/[your_color_name].png
+
+    # this would work
+    $ python change_logo_color.py --rgb [R] [G] [B] -o logos/[your_color_name].png
+
+    # this would create newlogo.png in current dir
+    $ python change_logo_color.py --rgb [R] [G] [B]
+
+    ```
+
 ### Dark frame environment
 
 - If you want to use a slide with a dark background, could utilize our darkframe environment
@@ -103,6 +120,8 @@ We modify some existing beautiful beamer templates and design our own theme colo
 ├── beamerouterthementu.sty
 ├── beamerthementu.sty
 ├── logos/
+├── change_logo_color.py
+├── requirements.txt
 ├── demo.pdf
 ├── main.tex
 ├── preamble.tex
@@ -119,6 +138,8 @@ We modify some existing beautiful beamer templates and design our own theme colo
 - `main.tex` : a slide tex file
 - `demo.pdf` : a demostration slide pdf
 - `reference.bib` : a bib file example 
+- `change_logo_color.py` : python script to generate logo in new color
+- `requirements.txt` : python modules used in the script
 
 
 ## Reference
