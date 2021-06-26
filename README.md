@@ -39,14 +39,15 @@ We modify some existing beautiful beamer templates and design our own theme colo
 - We offer a workaround here for you to change logo color with given RGB value with a python script.
 
     ```bash
-    # install modules first
-    pip install -r requirements.txt
+    # cd to correct directory and install dependencies first
+    $ cd change_logo_color/
+    $ pip install -r requirements.txt
 
     # example
-    $ python change_logo_color.py --rgb 128 0 0 --output logos/[your_color_name].png
+    $ python change_logo_color.py --rgb 128 0 0 --output YourLogoPath.png
 
     # this would work
-    $ python change_logo_color.py --rgb [R] [G] [B] -o logos/[your_color_name].png
+    $ python change_logo_color.py --rgb [R] [G] [B] -o YourLogoPath.png
 
     # this would create newlogo.png in current dir
     $ python change_logo_color.py --rgb [R] [G] [B]
@@ -113,33 +114,35 @@ We modify some existing beautiful beamer templates and design our own theme colo
 
 ```
 .
+├── LICENSE
 ├── README.md
-├── beamercolorthementu.sty
-├── beamerfontthementu.sty
-├── beamerinnerthementu.sty
-├── beamerouterthementu.sty
-├── beamerthementu.sty
-├── logos/
-├── change_logo_color.py
-├── requirements.txt
+├── change_logo_color
+│   ├── change_logo_color.py
+│   └── requirements.txt
 ├── demo.pdf
+├── latexmkrc
+├── logos/
 ├── main.tex
-├── preamble.tex
-└── reference.bib
+├── reference.bib
+└── templates
+    ├── beamercolorthementu.sty
+    ├── beamerfontthementu.sty
+    ├── beamerinnerthementu.sty
+    ├── beamerouterthementu.sty
+    └── beamerthementu.sty
 
 ```
 
 ### Description
-
+- `LICENSE` : MIT License
 - `README.md` : breif intro to the project
-- `*.sty` : our main theme style files
-- `preamble.tex` : preamble and some self-defined commands
+- `change_logo_color/` : python script to generate logo in new color
+- `demo.pdf` : a demostration slide pdf
+- `latexmkrc` : a setting file for change the template enviroment
 - `logos/` : directory for logos in different colors
 - `main.tex` : a slide tex file
-- `demo.pdf` : a demostration slide pdf
 - `reference.bib` : a bib file example 
-- `change_logo_color.py` : python script to generate logo in new color
-- `requirements.txt` : python modules used in the script
+- `templates/` : our main theme style files
 
 
 ## Reference

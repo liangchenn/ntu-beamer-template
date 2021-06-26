@@ -1,31 +1,40 @@
 \documentclass[pdf]{beamer}
 
-\input{preamble.tex}
-\usepackage{fontawesome}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\usepackage{fontawesome}% for Github icon
 \usepackage{FiraSans}
 \usepackage{FiraMono}
 
 
-% \setbeamercovered{transparent}
-
-
-% \usetheme{Madrid}
-% \usecolortheme{ntu}
-
+% set theme and colors
 \usetheme{ntu}
 \setcolor[ntugold]{ntubrick}
-
-%\setcolor[lakerpurple]{ntudark}
-%\setcolor[rred]{bblue}
-%\setcolor{ntubrick}  % example of setting only one color 
-
+\setdarkframecolor{darkthemedeepblue!20!black}
+\hypersetup{colorlinks,linkcolor=,urlcolor=\firstcolor}
 % Warning : If you set color other than ntu types, the logo in outertheme will disappear. Latex can not change the color of a picture. You might need to work on it yourself (e.g.PS)
 
 
-
-\setdarkframecolor{darkthemedeepblue!20!black}
-\hypersetup{colorlinks,linkcolor=\secondcolor, urlcolor=\secondcolor, citecolor=\secondcolor}
-
+% Set up listings env
+% basic setups
+\lstset{%
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
+    backgroundcolor = \color{lightgray!20},
+    stringstyle = \color{\secondcolor},
+    commentstyle=\color{\firstcolor!60},
+    numbers=left,
+    xleftmargin=1.0ex,
+    stepnumber=1,
+    numbersep=10pt,
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false
+}
 
 
 % Set title, author ... etc
@@ -35,33 +44,16 @@
 \author{Liang-Cheng Chen \& Po-Kang Hsiao}
 \date{June 2021}
 
-
-
-% \AtBeginSection[]{
-%   \begin{frame}
-%   \vfill
-%   \centering
-%   \begin{beamercolorbox}[sep=8pt,center]{title}
-%     \usebeamerfont{title}\insertsectionhead\par%
-%   \end{beamercolorbox}
-%   \vfill
-%   \end{frame}
-% }
-
-% \AtBeginSection{%
-%     \begin{frame}[plain, noframenumbering]{}
-%         \insertsectionhead
-%     \end{frame}%
-    
-% }
-
-\bibliography{reference.bib}
+% include the reference file
+\bibliography{reference.bib}% change the path for your .bib
 \renewcommand*{\bibfont}{\footnotesize}
 
-\hypersetup{colorlinks,linkcolor=,urlcolor=\firstcolor}
+
+
 
 \begin{document}
-
+ % if you want to remove the first page logo
+ % please go to beamerthementu.sty and comment out first frame of \inserttitlepage command
  \inserttitlepage
 
 \begin{frame}{Outline}

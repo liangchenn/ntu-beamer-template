@@ -1,0 +1,139 @@
+\mode<presentation>
+
+% This part handles logo on title page
+
+\setbeamertemplate{title page}{
+    {
+        \usebeamercolor[fg]{title}
+        
+        % title
+        \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, 
+              text width = .95\paperwidth,
+              xshift=2mm, 
+              yshift=5mm] 
+             at (current page.south west)
+             {
+               {\usebeamerfont{title}\textbf{\inserttitle}\par}\vspace{5mm}
+               {\large\insertsubtitle\par}\vspace{2mm}
+               {\insertauthor\par}\vspace{5mm}
+               %{\large\insertdate\par}
+             };
+        \end{tikzpicture}
+        
+    }
+        % logo on the title page
+        \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, 
+              xshift=1mm, 
+              yshift=-3.5mm] 
+             at (current page.north west) 
+             {\includegraphics[width=10mm,keepaspectratio]{logos/old_logo_white.png}}; 
+        \end{tikzpicture}
+
+}
+
+\setbeamertemplate{section page}{
+    
+    {
+        \usebeamercolor[fg]{section title}
+        
+        % title
+        \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south west, 
+              text width = .5\paperwidth,
+              xshift=2mm, 
+              yshift=5mm] 
+             at (current page.south west)
+             {
+               {\usebeamerfont{section title}\textbf{\insersectionttitle}\par}\vspace{5mm}
+               %{\large\insertdate\par}
+             };
+        \end{tikzpicture}
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+}
+
+% This part handles the other part in innertheme
+
+\setbeamertemplate{frametitle}{}
+
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\setbeamertemplate{items}[circle]
+\setbeamercolor{itemize item}{fg=\firstcolor!90!\secondcolor}
+\setbeamercolor{itemize subitem}{fg=\firstcolor!70!\secondcolor}
+\setbeamercolor{itemize subsubitem}{fg=\firstcolor!50!\secondcolor}
+
+\setbeamercolor{enumerate item}{fg=\firstcolor!90!\secondcolor}
+\setbeamercolor{enumerate subitem}{fg=\firstcolor!70!\secondcolor}
+\setbeamercolor{enumerate subsubitem}{fg=\firstcolor!50!\secondcolor}
+
+\setbeamertemplate{enumerate items}[default]
+\setbeamercolor{item projected}{fg=white,bg=\firstcolor!50!black}
+
+\setbeamercolor{block title}{fg=white,bg=\secondcolor!90}
+\setbeamerfont{block title}{series=\bfseries\small}
+\setbeamercolor{block body}{fg=black,bg=gray!5}
+\setbeamercolor{subtitle}{fg = gray}
+
+\setbeamercolor{alerted text}{fg=\firstcolor!70!black}
+
+
+% hyperlink and url color
+
+\setbeamercolor{structure}{fg=\secondcolor}
+\setbeamercolor{button}{fg=\firstcolor!80!black, bg=\secondcolor!60}
+
+
+
+
+% More on bib items
+
+\setbeamertemplate{bibliography item}[text]
+%https://tex.stackexchange.com/questions/68080/beamer-bibliography-icon
+%\setbeamertemplate{bibliography entry author}{
+%\setbeamercolor*{bibliography entry author}{fg=\firstcolor!80}
+%\setbeamerfont{bibliography entry author} {size=\normalsize, shape=\upshape, series=\bfseries}
+% \insertbiblabel
+% }
+
+\setbeamercolor*{bibliography item}{fg=\firstcolor}
+\setbeamercolor*{bibliography entry author}{fg=\firstcolor!80!black}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=\firstcolor!70}
+\setbeamercolor*{bibliography entry note}{fg=\firstcolor!50!}
+
+
+% Here I do not know why setbeamercolor is workable, but only setbeamerfont{item} is workable
+% Other font is not changable and I do not know why
+\setbeamerfont*{bibliography item}{size =\footnotesize}
+
+
+% % listing code display setups
+% % basic setups
+% \lstset{%
+%     basicstyle=\footnotesize\ttfamily,
+%     keywordstyle=\color{\secondcolor}\bfseries\ttfamily,
+%     backgroundcolor = \color{lightgray!20},
+%     stringstyle = \color{\secondcolor},
+%     commentstyle=\color{\firstcolor!60},
+%     numbers=left,
+%     xleftmargin=1.0ex,
+%     stepnumber=1,
+%     numbersep=10pt,
+%     tabsize=4,
+%     showspaces=false,
+%     showstringspaces=false
+% }
+
+\mode<all>

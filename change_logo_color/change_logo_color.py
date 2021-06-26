@@ -4,7 +4,7 @@ import argparse
 from PIL import Image
 from tqdm.auto import tqdm
 
-def change_color_of_logo(RGB:tuple, file='logos/bblue.png'):
+def change_color_of_logo(RGB:tuple, file='../logos/bblue.png'):
 
     assert isinstance(RGB, tuple), f"RGB should be tuple, currently got {type(RGB)}"
 

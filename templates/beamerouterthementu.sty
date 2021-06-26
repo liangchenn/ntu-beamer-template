@@ -109,14 +109,30 @@
 
 
 
+\setbeamercolor{title in head/foot}{fg=\secondcolor}
 
+% Table of contents
+\setbeamertemplate{section in toc}{%
+  \hskip1em{\color{\firstcolor!80!black}$\bullet$  \inserttocsection} \par}
 
+\setbeamertemplate{subsection in toc}{
+  \hskip3em{\color{\firstcolor}$\bullet$ \inserttocsubsection} \par}
 
+\setbeamertemplate{subsubsection in toc}{
+  \hskip5em{\color{\firstcolor}$\circ$ \inserttocsubsubsection} \par}
 
-
-
-
-
+% Fix space between sections and subsections in toc
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+{\vfill}
+{\vskip\itemsep}
+{}
+{}
+\pretocmd{\beamer@subsectionintoc}
+{\vskip0.5\itemsep}
+{}
+{}
+\makeatother 
 
 
 \mode<all>
