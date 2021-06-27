@@ -104,6 +104,7 @@ We modify some existing beautiful beamer templates and design our own theme colo
     ```
 
 ## Still working on
+- Refactoring `\cite` command for original options
 - Stylize references by group (e.g. year / field / importance)
 - Progress bar on headline
 
